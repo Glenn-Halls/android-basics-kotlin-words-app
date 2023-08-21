@@ -15,7 +15,14 @@ class WordListFragment  : Fragment() {
     }
     private var _binding: FragmentWordListBinding? = null
     private val binding get() = _binding!!
-    private val letterId = activity?.intent?.extras?.getString(LETTER).toString()
+    private lateinit var letterId: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            letterId = it.getString(LETTER).toString()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
